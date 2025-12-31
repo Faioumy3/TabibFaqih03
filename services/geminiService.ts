@@ -14,7 +14,7 @@ const SYSTEM_INSTRUCTION = `
 
 export const getFiqhResponse = async (query: string): Promise<string> => {
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
@@ -34,7 +34,7 @@ export const getFiqhResponse = async (query: string): Promise<string> => {
 
 export const getFatwaSuggestions = async (title: string): Promise<{ medical_context: string; tags: string[] }> => {
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: `Based on the Fatwa title: "${title}", suggest:
